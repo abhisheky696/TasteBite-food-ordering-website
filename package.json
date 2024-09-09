@@ -8,9 +8,9 @@
     "not dead"
   ],
   "scripts": {
-    "start":"parcel index.html",
+    "start": "parcel index.html",
     "build": "parcel build index.html"
-},
+  },
   "keywords": [],
   "author": "abhishekydv",
   "license": "ISC",

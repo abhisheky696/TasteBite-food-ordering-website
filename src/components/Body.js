@@ -12,17 +12,29 @@ const Body = () => {
         fetchData();
     }, []);
     const fetchData = async () => {
-        let data = await fetch(
-            "https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-        );
-        let jsonData = await data.json();
-        setRestaurents(
-            jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-        );
-        setFilterRest(
-            jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-        );
+        try {
+            let response = await fetch(
+                "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+            );
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            let jsonData = await response.json();
+            setRestaurents(
+                jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+            );
+            setFilterRest(
+                jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+            );
+        } catch (error) {
+            console.error("Error fetching data: ", error);
+            alert("Failed to load restaurants. Please try again later.");
+        }
     };
+    
+    if(!filterRest&&!rest) {
+        return <h1>No available restaurants</h1>
+    }
     if(filterRest.length === 0) {
         return <Shimmer/>
     }
