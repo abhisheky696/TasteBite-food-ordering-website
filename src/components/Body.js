@@ -12,24 +12,16 @@ const Body = () => {
         fetchData();
     }, []);
     const fetchData = async () => {
-        try {
-            let response = await fetch(
-                "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-            );
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            let jsonData = await response.json();
-            setRestaurents(
-                jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-            );
-            setFilterRest(
-                jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-            );
-        } catch (error) {
-            console.error("Error fetching data: ", error);
-            alert("Failed to load restaurants. Please try again later.");
-        }
+        let data = await fetch(
+            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+        );
+        let jsonData = await data.json();
+        setRestaurents(
+            jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+        );
+        setFilterRest(
+            jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+        );
     };
     
     if(!filterRest&&!rest) {
