@@ -39,10 +39,13 @@ const ShowRestaurants = () => {
 
     return (
         <div className="font-serif ml-2">
-            <h1 className="lg:w-6/12 w-full text-2xl font-bold mt-10 mx-auto mb-5 ">
+            <h1 className="lg:w-6/12 w-full text-2xl font-bold mt-10 mb-5 text-center lg:ml-20">
                 {name}
             </h1>
-            <div className="p-5 bg-white border rounded-lg shadow-2xl lg:w-[50%] w-fit m-3 lg:mx-auto">
+            <div>
+                
+            </div>
+            <div className="p-5 bg-white border rounded-lg shadow-2xl lg:w-[50%] w-fit md:w-[70%] m-3 lg:mx-auto mx-auto">
                 <div>
                     <span className="">⭐{avgRating}</span>
                     <span className="p-1">({totalRatingsString})</span>
