@@ -42,8 +42,7 @@ const ShowRestaurants = () => {
             <h1 className="lg:w-6/12 w-full text-2xl font-bold mt-10 mb-5 text-center lg:ml-20">
                 {name}
             </h1>
-            <div>
-                
+            <div>  
             </div>
             <div className="p-5 bg-white border rounded-lg shadow-2xl lg:w-[50%] w-fit md:w-[70%] m-3 lg:mx-auto mx-auto">
                 <div>

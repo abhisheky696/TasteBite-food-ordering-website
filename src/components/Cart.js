@@ -25,7 +25,6 @@ const Cart = () => {
         const audio = document.getElementById("payment-sound");
         audio.play();
     };
-
     if (cartItems.length === 0) {
         return (
             <div className="flex flex-col w-[50%] justify-center items-center mx-auto">
